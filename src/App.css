@@ -1,5 +1,18 @@
+.flex {
+	display: flex;
+}
+
 .list-container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+}
+
+/* CARD */
+.card-container {
+	margin: 0.5rem;
+}
+
+.card-icon {
+	justify-content: flex-end;
 }
