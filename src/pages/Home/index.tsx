@@ -1,5 +1,7 @@
 import ListOfCards from "../../components/ListOfCards";
 import ListOfCategories from "../../components/ListOfCategories";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const PRODUCTS = [
 	{
@@ -61,10 +63,13 @@ const PRODUCTS = [
 ];
 
 const Home = () => {
+	const { categoryId } = useParams();
+	console.log(categoryId);
+
 	return (
 		<>
-			<ListOfCategories />
-			<ListOfCards products={PRODUCTS} />
+			<ListOfCategories categoryId={categoryId} />
+			<ListOfCards products={PRODUCTS} categoryId={categoryId} />
 		</>
 	);
 };
