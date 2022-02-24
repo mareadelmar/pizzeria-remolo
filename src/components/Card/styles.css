@@ -1,0 +1,8 @@
+.card-container {
+	margin: 0.5rem;
+	border-radius: 16px !important;
+}
+
+.card-icon {
+	justify-content: flex-end;
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import CardItem from "../Card";
+import "./styles.css";
 
 const ListOfCards = ({ products, categoryId }) => {
 	const [filterProducts, setFilterProducts] = useState();

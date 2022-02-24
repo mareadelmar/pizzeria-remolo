@@ -2,40 +2,11 @@
 	display: flex;
 }
 
-.list-container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
+.header-container {
+	padding: 2rem 0;
+	margin-left: 1rem !important;
 }
 
-/* CARD */
-.card-container {
-	margin: 0.5rem;
-	border-radius: 16px !important;
-}
-
-.card-icon {
-	justify-content: flex-end;
-}
-
-/* CATEGORIES */
-.categories-container {
-	justify-content: center;
-	border-radius: 8px;
-}
-
-.categories-container > a {
-	margin: 1rem;
-	padding: 0.5rem;
-	border-radius: 16px;
+.header-container > p {
 	color: #757575;
-}
-
-#category-icon {
-	background-color: #e8e8e8;
-}
-
-#category-highlight-icon {
-	background-color: chocolate;
-	color: white;
 }
