@@ -1,7 +1,9 @@
 import ListOfCards from "../../components/ListOfCards";
 import ListOfCategories from "../../components/ListOfCategories";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import CategoryHeader from "../../components/CategoryHeader";
+import { Fab, Typography } from "@mui/material";
+import RoomServiceIcon from "@mui/icons-material/RoomService";
 
 const PRODUCTS = [
 	{
@@ -62,13 +64,41 @@ const PRODUCTS = [
 	},
 ];
 
+const CATEGORIES = [
+	{
+		category: "dessert",
+		title: "Postres",
+		description: "Elige nuestros postres exquicitos",
+	},
+	{
+		category: "pizza",
+		title: "Pizzas",
+		description: "Elige nuestras deliciosas pizzas",
+	},
+	{
+		category: "drink",
+		title: "Bebidas",
+		description: "Elige nuestros bebidas refrescantes",
+	},
+];
+
 const Home = () => {
 	const { categoryId } = useParams();
-	console.log(categoryId);
 
 	return (
 		<>
-			<ListOfCategories categoryId={categoryId} />
+			<Fab
+				variant='extended'
+				size='large'
+				aria-label='add'
+				className='btn-add'
+			>
+				<Typography component='p'>4 items</Typography>
+				<Typography component='p'>440.00</Typography>
+				<RoomServiceIcon sx={{ ml: 1 }} />
+			</Fab>
+			<CategoryHeader categories={CATEGORIES} categoryId={categoryId} />
+			<ListOfCategories categoryId={categoryId} categories={CATEGORIES} />
 			<ListOfCards products={PRODUCTS} categoryId={categoryId} />
 		</>
 	);

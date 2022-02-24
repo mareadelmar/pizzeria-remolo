@@ -10,3 +10,9 @@
 .header-container > p {
 	color: #757575;
 }
+
+.btn-add {
+	position: absolute !important;
+	right: 3rem;
+	bottom: 3rem;
+}
