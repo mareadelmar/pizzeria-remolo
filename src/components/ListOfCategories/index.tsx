@@ -3,53 +3,32 @@ import CakeIcon from "@mui/icons-material/Cake";
 import LocalBarIcon from "@mui/icons-material/LocalBar";
 import LocalPizzaIcon from "@mui/icons-material/LocalPizza";
 import { Link } from "react-router-dom";
+import "./styles.css";
 
-const CATEGORIES = {
-	dessert: "dessert",
-	drink: "drink",
-	pizza: "pizza",
+const categoryIcon = {
+	dessert: <CakeIcon fontSize='large' />,
+	drink: <LocalBarIcon fontSize='large' />,
+	pizza: <LocalPizzaIcon fontSize='large' />,
 };
 
-const ListOfCategories = ({ categoryId }) => {
+const ListOfCategories = ({ categoryId, categories }) => {
 	return (
 		<Container>
 			<div className='flex categories-container'>
-				<Link
-					to={`/products/${CATEGORIES.drink}`}
-					id={
-						categoryId === "drink"
-							? "category-highlight-icon"
-							: "category-icon"
-					}
-				>
-					<IconButton disableRipple={true} color='inherit'>
-						<LocalBarIcon fontSize='large' />
-					</IconButton>
-				</Link>
-				<Link
-					to={`/products/${CATEGORIES.dessert}`}
-					id={
-						categoryId === "dessert"
-							? "category-highlight-icon"
-							: "category-icon"
-					}
-				>
-					<IconButton color='inherit'>
-						<CakeIcon fontSize='large' />
-					</IconButton>
-				</Link>
-				<Link
-					to={`/products/${CATEGORIES.pizza}`}
-					id={
-						categoryId === "pizza"
-							? "category-highlight-icon"
-							: "category-icon"
-					}
-				>
-					<IconButton color='inherit'>
-						<LocalPizzaIcon fontSize='large' />
-					</IconButton>
-				</Link>
+				{categories.map(item => (
+					<Link
+						to={`/products/${item.category}`}
+						id={
+							categoryId === item.category
+								? "category-highlight-icon"
+								: "category-icon"
+						}
+					>
+						<IconButton disableRipple={true} color='inherit'>
+							{categoryIcon[item.category]}
+						</IconButton>
+					</Link>
+				))}
 			</div>
 		</Container>
 	);
