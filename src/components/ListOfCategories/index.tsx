@@ -17,6 +17,7 @@ const ListOfCategories = ({ categoryId, categories }) => {
 			<div className='flex categories-container'>
 				{categories.map(item => (
 					<Link
+						key={item.category}
 						to={`/products/${item.category}`}
 						id={
 							categoryId === item.category
