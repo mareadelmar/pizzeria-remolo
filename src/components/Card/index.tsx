@@ -10,7 +10,8 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import "./styles.css";
 import mainStore from "../../store/store";
 
-const CardItem = (item: IProduct) => {
+const CardItem = ({ width, btn, ...item }) => {
+	//item: IProduct, width: string, btn: Boolean
 	const { addToCart } = mainStore();
 
 	const handleAdd = () => {
@@ -19,7 +20,7 @@ const CardItem = (item: IProduct) => {
 	};
 
 	return (
-		<Card sx={{ width: 180 }} key={item.id} className='card-container'>
+		<Card sx={{ width: width }} key={item.id} className='card-container'>
 			<CardMedia
 				component='img'
 				height='180'
@@ -30,13 +31,17 @@ const CardItem = (item: IProduct) => {
 				<Typography component='h2' variant='h6'>
 					{item.name}
 				</Typography>
-				<Typography component='p'>{item.price}</Typography>
+				<Typography component='p' sx={{ color: "#757575" }}>
+					$ {item.price}
+				</Typography>
 			</CardContent>
-			<CardActions className='flex card-icon'>
-				<IconButton onClick={handleAdd}>
-					<AddBoxIcon fontSize='large' />
-				</IconButton>
-			</CardActions>
+			{!!btn ? (
+				<CardActions className='flex card-icon'>
+					<IconButton onClick={handleAdd}>
+						<AddBoxIcon fontSize='large' />
+					</IconButton>
+				</CardActions>
+			) : null}
 		</Card>
 	);
 };

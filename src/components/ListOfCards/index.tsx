@@ -29,7 +29,12 @@ const ListOfCards = ({ categoryId }: ListCardsComponent) => {
 			<div className='list-container'>
 				{filterProducts &&
 					filterProducts.map((item: IProduct) => (
-						<CardItem {...item} key={item.id} />
+						<CardItem
+							{...item}
+							width='180'
+							btn={true}
+							key={item.id}
+						/>
 					))}
 			</div>
 		</Container>
