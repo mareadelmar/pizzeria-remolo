@@ -11,17 +11,9 @@ body {
 	min-height: 99vh;
 	box-sizing: border-box;
 	position: relative;
+	padding: 1rem 0 4rem 0;
 }
 
 .flex {
 	display: flex;
-}
-
-.header-container {
-	padding: 2rem 0;
-	margin-left: 1rem !important;
-}
-
-.header-container > p {
-	color: #757575;
 }

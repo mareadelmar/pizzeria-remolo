@@ -15,7 +15,7 @@ const ListOfCards = ({ categoryId }: ListCardsComponent) => {
 	useEffect(() => {
 		if (categoryId) {
 			const newList = products.filter(
-				item => item.category === categoryId
+				(item: IProduct) => item.category === categoryId
 			);
 			setFilterProducts(newList);
 		} else {
@@ -27,11 +27,11 @@ const ListOfCards = ({ categoryId }: ListCardsComponent) => {
 	return (
 		<Container>
 			<div className='list-container'>
-				{filterProducts &&
+				{filterProducts.length > 0 &&
 					filterProducts.map((item: IProduct) => (
 						<CardItem
 							{...item}
-							width='180'
+							width='200'
 							btn={true}
 							key={item.id}
 						/>

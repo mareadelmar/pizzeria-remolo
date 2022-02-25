@@ -1,5 +1,7 @@
 .btn-add {
 	position: absolute !important;
+	background-color: #ff678c !important;
+	color: white !important;
 	right: 3rem;
-	bottom: 3rem;
+	bottom: 5rem;
 }

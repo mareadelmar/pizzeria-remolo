@@ -10,7 +10,15 @@ import AddBoxIcon from "@mui/icons-material/AddBox";
 import "./styles.css";
 import mainStore from "../../store/store";
 
-const CardItem = ({ width, btn, ...item }) => {
+const CardItem = ({
+	width,
+	btn,
+	...item
+}: {
+	width: string;
+	btn: Boolean;
+	item: IProduct;
+}) => {
 	//item: IProduct, width: string, btn: Boolean
 	const { addToCart } = mainStore();
 

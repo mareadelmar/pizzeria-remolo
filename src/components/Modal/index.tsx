@@ -3,7 +3,7 @@ import CardItem from "../../components/Card";
 import "./styles.css";
 import mainStore from "../../store/store.js";
 
-const Modal = ({ open, handleCloseModal }) => {
+const Modal = ({ open, handleCloseModal }: { open: Boolean }) => {
 	const { cart } = mainStore();
 
 	const cartCalc = () => {
@@ -23,10 +23,10 @@ const Modal = ({ open, handleCloseModal }) => {
 				<Typography component='h4' variant='h4'>
 					Mi orden
 				</Typography>
-				<Typography sx={{ color: "#757575", mt: 1 }} component='p'>
+				<Typography sx={{ mt: 1 }} component='p'>
 					{cart.length} items
 				</Typography>
-				{cart.map(item => (
+				{cart.map((item: IProduct) => (
 					<CardItem
 						{...item}
 						width='90%'
@@ -34,14 +34,16 @@ const Modal = ({ open, handleCloseModal }) => {
 						key={item.name}
 					/>
 				))}
-				<Typography component='p' variant='h6' sx={{ mt: 4 }}>
-					Total: $ {cartCalc()}
-				</Typography>
-
+				<Box className='modal-price'>
+					<Typography component='p' variant='h6'>
+						Items totales:{" "}
+					</Typography>
+					<Typography component='p' variant='h6'>
+						$ {cartCalc()}
+					</Typography>
+				</Box>
 				<Box sx={{ textAlign: "right" }}>
-					<Button color='secondary' variant='contained'>
-						Ir al checkout
-					</Button>
+					<Button variant='contained'>Ir al checkout</Button>
 				</Box>
 			</Box>
 		</ModalMUI>

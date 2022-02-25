@@ -10,13 +10,13 @@ import mainStore from "../../store/store";
 const Home = () => {
 	const { getCategories, getProducts } = mainStore();
 	const { categoryId } = useParams();
-	const [open, setOpen] = useState(false);
+	const [open, setOpen] = useState<Boolean>(false);
 
 	const handleCloseModal = () => {
 		setOpen(false);
 	};
 
-	const handleOpenModal = () => {
+	const handleOpenModal: Function = () => {
 		setOpen(true);
 	};
 

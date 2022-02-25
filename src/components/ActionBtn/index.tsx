@@ -3,7 +3,7 @@ import RoomServiceIcon from "@mui/icons-material/RoomService";
 import "./styles.css";
 import mainStore from "../../store/store";
 
-const ActionBtn = ({ handleOpenModal }) => {
+const ActionBtn = ({ handleOpenModal }: { handleOpenModal: Function }) => {
 	const { cart } = mainStore();
 
 	const cartCalc = () => {
@@ -16,7 +16,6 @@ const ActionBtn = ({ handleOpenModal }) => {
 	};
 
 	const handleCheckout = () => {
-		// modal checkout
 		handleOpenModal();
 	};
 
@@ -26,7 +25,6 @@ const ActionBtn = ({ handleOpenModal }) => {
 			size='large'
 			aria-label='add'
 			className='btn-add'
-			color='secondary'
 			onClick={handleCheckout}
 		>
 			<Box sx={{ ml: 1, mt: 1 }}>
