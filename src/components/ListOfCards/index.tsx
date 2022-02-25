@@ -4,17 +4,21 @@ import CardItem from "../Card";
 import "./styles.css";
 import { db } from "../../config/firebaseConfig.js";
 
-const ListOfCards = ({ categoryId }) => {
-	const [filterProducts, setFilterProducts] = useState([]);
-	const [productList, setProductList] = useState([]);
+type ListCardsComponent = {
+	categoryId?: CategoryId;
+};
+
+const ListOfCards = ({ categoryId }: ListCardsComponent) => {
+	const [filterProducts, setFilterProducts] = useState<IProduct[]>([]);
+	const [productList, setProductList] = useState<IProduct[]>([]);
 
 	useEffect(() => {
 		const ref = db.collection("products");
-		let data = [];
+		let data: IProduct[] = [];
 
-		ref.get().then(doc => {
+		ref.get().then((doc: any) => {
 			if (doc) {
-				doc.forEach(item => {
+				doc.forEach((item: any) => {
 					console.log(item.data());
 					data.push(item.data());
 				});
@@ -39,7 +43,7 @@ const ListOfCards = ({ categoryId }) => {
 		<Container>
 			<div className='list-container'>
 				{filterProducts &&
-					filterProducts.map(item => (
+					filterProducts.map((item: IProduct) => (
 						<CardItem {...item} key={item.id} />
 					))}
 			</div>

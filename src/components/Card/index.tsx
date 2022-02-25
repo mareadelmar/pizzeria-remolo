@@ -9,7 +9,11 @@ import {
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import "./styles.css";
 
-const CardItem = item => {
+const CardItem = (item: IProduct) => {
+	const handleAdd = () => {
+		console.log("agregar", item);
+	};
+
 	return (
 		<Card sx={{ width: 180 }} key={item.id} className='card-container'>
 			<CardMedia

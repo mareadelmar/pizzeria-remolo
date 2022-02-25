@@ -1,10 +1,18 @@
 import "./styles.css";
 import { Container, Typography } from "@mui/material";
 
-const CategoryHeader = ({ categoryId, categoriesList }) => {
+type CategoriesHeaderComponent = {
+	categoryId?: CategoryId;
+	categoriesList?: ICategory[];
+};
+
+const CategoryHeader = ({
+	categoryId,
+	categoriesList,
+}: CategoriesHeaderComponent) => {
 	return (
 		categoriesList.length > 0 &&
-		categoriesList.map(item => {
+		categoriesList.map((item: ICategory) => {
 			if (item.category === categoryId) {
 				return (
 					<Container className='header-container' key={item.category}>
