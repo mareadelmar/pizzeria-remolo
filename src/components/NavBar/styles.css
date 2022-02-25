@@ -1,0 +1,11 @@
+.nav-container {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-container > svg {
+	font-size: 32px;
+	color: #757575;
+	margin: 0 1rem;
+}
