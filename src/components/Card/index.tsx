@@ -6,7 +6,7 @@ import {
 	CardActions,
 	IconButton,
 } from "@mui/material";
-import AddBoxIcon from "@mui/icons-material/AddBox";
+import AddIcon from "@mui/icons-material/Add";
 import "./styles.css";
 import mainStore from "../../store/store";
 
@@ -46,7 +46,7 @@ const CardItem = ({
 			{!!btn ? (
 				<CardActions className='flex card-icon'>
 					<IconButton onClick={handleAdd}>
-						<AddBoxIcon fontSize='large' />
+						<AddIcon fontSize='large' />
 					</IconButton>
 				</CardActions>
 			) : null}

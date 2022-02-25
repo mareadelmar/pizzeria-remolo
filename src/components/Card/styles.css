@@ -6,3 +6,9 @@
 .card-icon {
 	justify-content: flex-end;
 }
+
+.card-icon > button {
+	border: 1px solid #757575;
+	border-radius: 8px;
+	padding: 0.25rem;
+}
