@@ -3,23 +3,32 @@ import ListOfCategories from "../../components/ListOfCategories";
 import { useParams } from "react-router-dom";
 import CategoryHeader from "../../components/CategoryHeader";
 import { useEffect, useState } from "react";
-import mainStore from "../../store/store.js";
 import ActionBtn from "../../components/ActionBtn";
+import Modal from "../../components/Modal";
+import mainStore from "../../store/store";
 
 const Home = () => {
-	const { getCategories, getProducts, cart } = mainStore();
+	const { getCategories, getProducts } = mainStore();
 	const { categoryId } = useParams();
+	const [open, setOpen] = useState(false);
+
+	const handleCloseModal = () => {
+		setOpen(false);
+	};
+
+	const handleOpenModal = () => {
+		setOpen(true);
+	};
 
 	useEffect(() => {
 		getCategories();
 		getProducts();
 	}, []);
 
-	console.log(cart);
-
 	return (
 		<>
-			<ActionBtn />
+			<Modal open={open} handleCloseModal={handleCloseModal} />
+			<ActionBtn handleOpenModal={handleOpenModal} />
 			{categoryId ? (
 				<CategoryHeader categoryId={categoryId} />
 			) : (
