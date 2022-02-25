@@ -8,6 +8,7 @@ const [useStore] = create(set => ({
 	// state
 	categories: [],
 	products: [],
+	cart: [],
 
 	// actions
 	getCategories: () => {
@@ -34,6 +35,10 @@ const [useStore] = create(set => ({
 			}
 		});
 	},
+	addToCart: item =>
+		set(state => ({
+			cart: [...state.cart, item],
+		})),
 }));
 
 export default useStore;
