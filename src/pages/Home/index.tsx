@@ -26,6 +26,7 @@ const Home = () => {
 		setCategoriesList(data);
 	}, []);
 
+	//if (categoriesList.length <= 0) return <p>Cargando...</p>;
 	return (
 		<>
 			<Fab
@@ -38,10 +39,14 @@ const Home = () => {
 				<Typography component='p'>440.00</Typography>
 				<RoomServiceIcon sx={{ ml: 1 }} />
 			</Fab>
-			<CategoryHeader
-				categoriesList={categoriesList}
-				categoryId={categoryId}
-			/>
+			{categoryId ? (
+				<CategoryHeader
+					categoriesList={categoriesList}
+					categoryId={categoryId}
+				/>
+			) : (
+				<CategoryHeader />
+			)}
 			<ListOfCategories
 				categoryId={categoryId}
 				categoriesList={categoriesList}
