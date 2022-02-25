@@ -4,6 +4,7 @@ import LocalBarIcon from "@mui/icons-material/LocalBar";
 import LocalPizzaIcon from "@mui/icons-material/LocalPizza";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import mainStore from "../../store/store";
 
 const categoryIcon: any = {
 	dessert: <CakeIcon fontSize='large' />,
@@ -13,18 +14,16 @@ const categoryIcon: any = {
 
 type CategoriesListComponent = {
 	categoryId?: CategoryId;
-	categoriesList: ICategory[];
 };
 
-const ListOfCategories = ({
-	categoryId,
-	categoriesList,
-}: CategoriesListComponent) => {
+const ListOfCategories = ({ categoryId }: CategoriesListComponent) => {
+	const { categories } = mainStore();
+
 	return (
 		<Container>
 			<div className='flex categories-container'>
-				{categoriesList.length > 0 &&
-					categoriesList.map((item: ICategory) => (
+				{categories.length > 0 &&
+					categories.map((item: ICategory) => (
 						<Link
 							key={item.category}
 							to={`/products/${item.category}`}

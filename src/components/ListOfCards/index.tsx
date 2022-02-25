@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 import CardItem from "../Card";
 import "./styles.css";
-import { db } from "../../config/firebaseConfig.js";
+import mainStore from "../../store/store";
 
 type ListCardsComponent = {
 	categoryId?: CategoryId;
@@ -10,35 +10,20 @@ type ListCardsComponent = {
 
 const ListOfCards = ({ categoryId }: ListCardsComponent) => {
 	const [filterProducts, setFilterProducts] = useState<IProduct[]>([]);
-	const [productList, setProductList] = useState<IProduct[]>([]);
-
-	useEffect(() => {
-		const ref = db.collection("products");
-		let data: IProduct[] = [];
-
-		ref.get().then((doc: any) => {
-			if (doc) {
-				doc.forEach((item: any) => {
-					console.log(item.data());
-					data.push(item.data());
-				});
-			}
-		});
-		console.log(data);
-		setProductList(data);
-	}, []);
+	const { products } = mainStore();
 
 	useEffect(() => {
 		if (categoryId) {
-			const newList = productList.filter(
+			const newList = products.filter(
 				item => item.category === categoryId
 			);
 			setFilterProducts(newList);
 		} else {
-			setFilterProducts(productList);
+			setFilterProducts(products);
 		}
 	}, [categoryId]);
 
+	if (!products.length) return <label>cargando...</label>;
 	return (
 		<Container>
 			<div className='list-container'>

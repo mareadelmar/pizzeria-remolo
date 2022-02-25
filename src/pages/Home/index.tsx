@@ -5,28 +5,17 @@ import CategoryHeader from "../../components/CategoryHeader";
 import { Fab, Typography } from "@mui/material";
 import RoomServiceIcon from "@mui/icons-material/RoomService";
 import { useEffect, useState } from "react";
-import { db } from "../../config/firebaseConfig.js";
+import mainStore from "../../store/store.js";
 
 const Home = () => {
+	const { getCategories, getProducts } = mainStore();
 	const { categoryId } = useParams();
-	const [categoriesList, setCategoriesList] = useState<ICategory[]>([]);
 
 	useEffect(() => {
-		const ref = db.collection("categories");
-		let data: ICategory[] = [];
-
-		ref.get().then((doc: any) => {
-			if (doc) {
-				doc.forEach((item: any) => {
-					data.push(item.data());
-				});
-			}
-		});
-		console.log(data);
-		setCategoriesList(data);
+		getCategories();
+		getProducts();
 	}, []);
 
-	//if (categoriesList.length <= 0) return <p>Cargando...</p>;
 	return (
 		<>
 			<Fab
@@ -40,17 +29,11 @@ const Home = () => {
 				<RoomServiceIcon sx={{ ml: 1 }} />
 			</Fab>
 			{categoryId ? (
-				<CategoryHeader
-					categoriesList={categoriesList}
-					categoryId={categoryId}
-				/>
+				<CategoryHeader categoryId={categoryId} />
 			) : (
 				<CategoryHeader />
 			)}
-			<ListOfCategories
-				categoryId={categoryId}
-				categoriesList={categoriesList}
-			/>
+			<ListOfCategories categoryId={categoryId} />
 			<ListOfCards categoryId={categoryId} />
 		</>
 	);
